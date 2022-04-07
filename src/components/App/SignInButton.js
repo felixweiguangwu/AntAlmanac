@@ -1,11 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { CloudDownload } from '@material-ui/icons';
+import { SaveAlt, AssignmentReturned, AssignmentReturn } from '@material-ui/icons';
 import { Button, Dialog } from '@material-ui/core';
 
-import { Amplify, Hub, Auth } from 'aws-amplify';
+import { Amplify, Auth } from 'aws-amplify';
 
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
 import awsExports from '../../aws-exports';
 
 import { loadAuth, saveAuth, loadSchedule } from '../../actions/AppStoreActions';
@@ -39,26 +38,9 @@ const SignInButton = (props) => {
     useEffect(() => {
         if (isOpen) document.addEventListener('keydown', eventCall, false);
         else document.removeEventListener('keydown', eventCall, false);
-        console.log('test');
     }, [isOpen, eventCall]);
 
     useEffect(() => {
-        const unsubscribe = Hub.listen('auth', ({ payload: { event, data } }) => {
-            switch (event) {
-                case 'signIn':
-                    setUser(data);
-                    loadAuth(data);
-                    console.log(data);
-                    break;
-                case 'signOut':
-                    setUser(null);
-                    break;
-                case 'customOAuthState':
-                    break;
-                default:
-                    break;
-            }
-        });
         Auth.currentAuthenticatedUser()
             .then((currentUser) => {
                 setUser(currentUser);
@@ -74,8 +56,6 @@ const SignInButton = (props) => {
                     }
                 }
             });
-
-        return unsubscribe;
     }, []);
 
     return (
@@ -87,44 +67,22 @@ const SignInButton = (props) => {
                             saveAuth(user);
                         }}
                         color="inherit"
-                        startIcon={<CloudDownload />}
+                        startIcon={<SaveAlt />}
                     >
                         Save User
                     </Button>
-                    <Button onClick={signOut} color="inherit" startIcon={<CloudDownload />}>
+                    <Button onClick={signOut} color="inherit" startIcon={<AssignmentReturn />}>
                         Logout
                     </Button>
                 </>
             ) : (
-                <Button onClick={handleOpen} color="inherit" startIcon={<CloudDownload />}>
+                <Button onClick={handleOpen} color="inherit" startIcon={<AssignmentReturned />}>
                     Login
                 </Button>
             )}
 
-            <Dialog open={isOpen}>
-                <Authenticator socialProviders={['google']}>
-                    {({ signOut, user }) => (
-                        <main>
-                            <h1>Hello {user.username}</h1>
-                            <button
-                                onClick={() => {
-                                    saveAuth(user);
-                                }}
-                            >
-                                Save
-                            </button>
-                            <button
-                                onClick={() => {
-                                    signOut();
-                                    handleClose();
-                                }}
-                            >
-                                Sign out
-                            </button>
-                            <button onClick={handleClose}>Cancel</button>
-                        </main>
-                    )}
-                </Authenticator>
+            <Dialog open={isOpen} onClose={handleClose}>
+                <Authenticator socialProviders={['google']}></Authenticator>
             </Dialog>
         </>
     );
