@@ -117,15 +117,7 @@ class LoadSaveButtonBase extends PureComponent {
 }
 
 const LoadSaveScheduleFunctionality = () => {
-    useEffect(() => {
-        if (typeof Storage !== 'undefined') {
-            const savedUserID = window.localStorage.getItem('userID');
-
-            if (savedUserID != null) {
-                loadSchedule(savedUserID, true);
-            }
-        }
-    }, []);
+    useEffect(() => {}, []);
 
     return (
         <>

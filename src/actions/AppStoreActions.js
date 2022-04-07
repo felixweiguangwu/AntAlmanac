@@ -109,6 +109,66 @@ export const openSnackbar = (variant, message, duration, position, style) => {
         style: style,
     });
 };
+export async function loadAuth(user) {
+    const userID = user.getSignInUserSession().getAccessToken().payload.sub;
+    try {
+        const data = await fetch('http://localhost:2632/api/auth/loadUserData/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + user.getSignInUserSession().getAccessToken().jwtToken,
+            },
+        });
+        const json = await data.json();
+
+        dispatcher.dispatch({
+            type: 'LOAD_SCHEDULE',
+            userData: await getCoursesData(json.userData),
+        });
+        openSnackbar('success', `Schedule for username "${userID}" loaded.`);
+    } catch (e) {
+        openSnackbar('error', `Couldn't find schedules for username "${userID}".`);
+    }
+}
+
+export async function saveAuth(user) {
+    const addedCourses = AppStore.getAddedCourses();
+    const customEvents = AppStore.getCustomEvents();
+
+    const userID = user.getSignInUserSession().getAccessToken().payload.sub;
+    const userData = { addedCourses: [], customEvents: customEvents };
+
+    userData.addedCourses = addedCourses.map((course) => {
+        return {
+            color: course.color,
+            term: course.term,
+            sectionCode: course.section.sectionCode,
+            scheduleIndices: course.scheduleIndices,
+        };
+    });
+
+    try {
+        await fetch('http://localhost:2632/api/auth/saveUserData/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + user.getSignInUserSession().getAccessToken().jwtToken,
+            },
+            body: JSON.stringify({ userData }),
+        });
+
+        openSnackbar(
+            'success',
+            `Schedule saved under username "${userID}". Don't forget to sign up for classes on WebReg!`
+        );
+
+        dispatcher.dispatch({
+            type: 'SAVE_SCHEDULE',
+        });
+    } catch (e) {
+        openSnackbar('error', `Schedule could not be saved under username "${userID}`);
+    }
+}
 
 export const saveSchedule = async (userID, rememberMe) => {
     if (userID != null) {

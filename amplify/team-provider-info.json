@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-antalmanac-dev-221045-authRole",
+            "UnauthRoleArn": "arn:aws:iam::550634638569:role/amplify-antalmanac-dev-221045-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::550634638569:role/amplify-antalmanac-dev-221045-authRole",
+            "Region": "us-west-1",
+            "DeploymentBucketName": "amplify-antalmanac-dev-221045-deployment",
+            "UnauthRoleName": "amplify-antalmanac-dev-221045-unauthRole",
+            "StackName": "amplify-antalmanac-dev-221045",
+            "StackId": "arn:aws:cloudformation:us-west-1:550634638569:stack/amplify-antalmanac-dev-221045/ec232d30-b567-11ec-a528-0226c99d4d1f",
+            "AmplifyAppId": "d23kzspbl8poza"
+        },
+        "categories": {
+            "auth": {
+                "antalmanac40fe907a": {}
+            }
+        }
+    }
+}

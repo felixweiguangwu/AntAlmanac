@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Feedback from './Feedback';
 import Home from './Home';
 import { isDarkMode } from '../../helpers';
+import { Authenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css'; // default theme
 
 class App extends PureComponent {
     state = {
@@ -55,19 +57,21 @@ class App extends PureComponent {
         });
 
         return (
-            <BrowserRouter>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <ThemeProvider theme={theme}>
-                                <Home />
-                            </ThemeProvider>
-                        }
-                    />
-                    <Route exact path="/feedback" element={<Feedback />} />
-                </Routes>
-            </BrowserRouter>
+            <Authenticator.Provider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <ThemeProvider theme={theme}>
+                                    <Home />
+                                </ThemeProvider>
+                            }
+                        />
+                        <Route exact path="/feedback" element={<Feedback />} />
+                    </Routes>
+                </BrowserRouter>
+            </Authenticator.Provider>
         );
     }
 }

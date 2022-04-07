@@ -4,6 +4,9 @@ import App from './components/App/App';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { unregister } from './registerServiceWorker';
 import { SnackbarProvider } from 'notistack';
+import { Amplify } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 // import whyDidYouRender from '@welldone-software/why-did-you-render';
 // if (process.env.NODE_ENV === 'development') {
 // const whyDidYouRender = require('@welldone-software/why-did-you-render/dist/no-classes-transpile/umd/whyDidYouRender.min.js');

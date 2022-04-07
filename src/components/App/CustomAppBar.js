@@ -12,6 +12,7 @@ import { ReactComponent as MobileLogo } from './mobile-logo.svg';
 import News from './News';
 import AboutPage from './AboutPage';
 import ConditionalWrapper from './ConditionalWrapper';
+import SignInButton from './SignInButton';
 
 const styles = {
     appBar: {
@@ -47,6 +48,7 @@ const CustomAppBar = (props) => {
 
                 <div style={{ flexGrow: '1' }} />
 
+                <SignInButton />
                 <LoadSaveScheduleFunctionality />
 
                 <ConditionalWrapper
