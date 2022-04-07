@@ -44,7 +44,6 @@ const SignInButton = (props) => {
         Auth.currentAuthenticatedUser()
             .then((currentUser) => {
                 setUser(currentUser);
-                console.log(currentUser);
                 loadAuth(currentUser);
             })
             .catch(() => {

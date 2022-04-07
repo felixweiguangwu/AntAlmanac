@@ -117,8 +117,6 @@ class LoadSaveButtonBase extends PureComponent {
 }
 
 const LoadSaveScheduleFunctionality = () => {
-    useEffect(() => {}, []);
-
     return (
         <>
             <LoadSaveButtonBase actionName={'Save'} action={saveSchedule} />
