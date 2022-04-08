@@ -107,7 +107,7 @@ class CustomEventDialog extends PureComponent {
         return (
             <>
                 {this.props.customEvent ? (
-                    <IconButton onClick={() => this.setState({ open: true })} size="large">
+                    <IconButton onClick={() => this.setState({ open: true })} size="large" color="inherit">
                         <Edit fontSize="small" />
                     </IconButton>
                 ) : (
@@ -118,6 +118,7 @@ class CustomEventDialog extends PureComponent {
                             variant="outlined"
                             size="small"
                             startIcon={<Add fontSize="small" />}
+                            color="inherit"
                         >
                             Add Custom
                         </Button>

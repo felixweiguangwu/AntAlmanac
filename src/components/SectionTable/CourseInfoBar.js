@@ -8,7 +8,6 @@ import { PETERPORTAL_REST_ENDPOINT } from '../../api/endpoints';
 const styles = () => ({
     root: {
         button: {
-            backgroundColor: '#72a9ed',
             boxShadow: 'none',
         },
         rightSpace: {
@@ -147,12 +146,8 @@ class CourseInfoBar extends PureComponent {
                         const currentTarget = event.currentTarget;
                         this.togglePopover(currentTarget);
                     }}
-                    sx={{
-                        marginRight: 1,
-                        backgroundColor: '#e0e0e0',
-                        color: 'rgba(0, 0, 0, 0.87)',
-                        '&:hover ': { backgroundColor: '#d5d5d5' },
-                    }}
+                    color="inherit"
+                    sx={{ marginRight: 1, color: 'rgba(0, 0, 0, 0.87)' }}
                 >
                     <InfoOutlinedIcon fontSize="small" style={{ marginRight: '5px' }} />
                     {`${deptCode} ${courseNumber} | ${courseTitle}`}

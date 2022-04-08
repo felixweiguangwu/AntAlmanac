@@ -33,6 +33,7 @@ class ScreenshotButton extends PureComponent {
                     variant="outlined"
                     size="small"
                     startIcon={<Panorama fontSize="small" />}
+                    color="inherit"
                 >
                     Screenshot
                 </Button>

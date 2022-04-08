@@ -269,6 +269,7 @@ class ExportCalendarButton extends PureComponent {
                     variant="outlined"
                     size="small"
                     startIcon={<Today fontSize="small" />}
+                    color="inherit"
                 >
                     Download
                 </Button>

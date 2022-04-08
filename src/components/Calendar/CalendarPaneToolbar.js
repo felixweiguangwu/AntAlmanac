@@ -111,6 +111,7 @@ const CalendarPaneToolbar = (props) => {
                     }}
                     size="large"
                     sx={{ border: 'none' }}
+                    color="inherit"
                 >
                     <Delete fontSize="small" />
                 </IconButton>
@@ -132,18 +133,14 @@ const CalendarPaneToolbar = (props) => {
             >
                 {[
                     <ExportCalendar />,
-                    <ScreenshotButton onTakeScreenshot={props.onTakeScreenshot} />,
-                    <CustomEventsDialog editMode={false} currentScheduleIndex={props.currentScheduleIndex} />,
+                    <ScreenshotButton onTakeScreenshot={props.onTakeScreenshot} color="inherit" />,
+                    <CustomEventsDialog
+                        editMode={false}
+                        currentScheduleIndex={props.currentScheduleIndex}
+                        color="inherit"
+                    />,
                 ].map((element, index) => (
-                    <Box
-                        sx={{
-                            button: { color: 'rgba(0, 0, 0, 0.87)', border: '1px solid rgba(0, 0, 0, 0.23)' },
-                            'button:hover': {
-                                backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                                border: '1px solid rgba(0, 0, 0, 0.23)',
-                            },
-                        }}
-                    >
+                    <Box sx={{}}>
                         <ConditionalWrapper
                             key={index}
                             condition={isMobileScreen}
