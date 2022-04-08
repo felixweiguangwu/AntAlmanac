@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { createMuiTheme } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { createTheme } from '@mui/material/styles';
+import { ThemeProvider, StyledEngineProvider, adaptV4Theme } from '@mui/material/styles';
 import ReactGA from 'react-ga';
 import { undoDelete } from '../../actions/AppStoreActions';
 import AppStore from '../../stores/AppStore';
@@ -36,18 +36,22 @@ class App extends PureComponent {
     }
 
     render() {
-        const theme = createMuiTheme({
-            overrides: {
+        const theme = createTheme({
+            components: {
                 MuiCssBaseline: {
-                    '@global': {
+                    styleOverrides: {
                         a: {
                             color: this.state.darkMode ? 'dodgerblue' : 'blue',
+                        },
+                        'div .MuiOutlinedInput-notchedOutline': {
+                            borderWidth: '0 !important',
+                            borderBottomWidth: '1px !important',
                         },
                     },
                 },
             },
             palette: {
-                type: this.state.darkMode ? 'dark' : 'light',
+                mode: this.state.darkMode ? 'dark' : 'light',
                 primary: {
                     main: '#305db7',
                 },
@@ -60,9 +64,11 @@ class App extends PureComponent {
                     <Route
                         path="/"
                         element={
-                            <ThemeProvider theme={theme}>
-                                <Home />
-                            </ThemeProvider>
+                            <StyledEngineProvider injectFirst>
+                                <ThemeProvider theme={theme}>
+                                    <Home />
+                                </ThemeProvider>
+                            </StyledEngineProvider>
                         }
                     />
                     <Route exact path="/feedback" element={<Feedback />} />

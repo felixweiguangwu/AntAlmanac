@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Popover, IconButton } from '@material-ui/core';
+import { Popover, IconButton } from '@mui/material';
 import { SketchPicker } from 'react-color';
 import { changeCourseColor, changeCustomEventColor } from '../../actions/AppStoreActions';
-import { ColorLens } from '@material-ui/icons';
+import { ColorLens } from '@mui/icons-material';
 import ReactGA from 'react-ga';
 
 class ColorPicker extends PureComponent {
@@ -49,6 +49,7 @@ class ColorPicker extends PureComponent {
                     onClick={(e) => {
                         this.handleClick(e);
                     }}
+                    size="large"
                 >
                     <ColorLens fontSize="small" />
                 </IconButton>
@@ -82,7 +83,7 @@ ColorPicker.propTypes = {
     color: PropTypes.string.isRequired,
     sectionCode: PropTypes.string,
     isCustomEvent: PropTypes.bool.isRequired,
-    customEventID: PropTypes.number,
+    customEventID: PropTypes.string,
     term: PropTypes.string,
 };
 

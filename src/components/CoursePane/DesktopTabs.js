@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Tab, Tabs, Typography, Paper } from '@material-ui/core';
-import { FormatListBulleted, MyLocation, Search } from '@material-ui/icons';
+import { Tab, Tabs, Typography, Paper } from '@mui/material';
+import { FormatListBulleted, MyLocation, Search } from '@mui/icons-material';
 import AddedCoursePane from '../AddedCourses/AddedCoursePane';
 import RightPane from './RightPane';
 import RightPaneStore from '../../stores/RightPaneStore';

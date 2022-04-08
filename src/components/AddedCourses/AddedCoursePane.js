@@ -1,8 +1,8 @@
 import AppStore from '../../stores/AppStore';
 import React, { PureComponent } from 'react';
-import { Grid, Typography, Button, Menu, MenuItem } from '@material-ui/core';
+import { Grid, Typography, Button, Menu, MenuItem } from '@mui/material';
 import SectionTable from '../SectionTable/SectionTable.js';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import CustomEventDetailView from './CustomEventDetailView';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import { clearSchedules, copySchedule } from '../../actions/AppStoreActions';
@@ -20,10 +20,12 @@ const styles = {
         display: 'flex',
         width: '100%',
         justifyContent: 'space-between',
+        marginTop: '8px',
+        marginLeft: '8px',
     },
     clearSchedule: {
         marginLeft: '4px',
-        marginRight: '4px',
+        marginRight: '-4px',
     },
 };
 

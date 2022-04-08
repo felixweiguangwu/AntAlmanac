@@ -1,24 +1,15 @@
 import React, { PureComponent } from 'react';
-import {
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-    TextField,
-} from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
 import { getCourseInfo, queryWebsoc } from '../../helpers';
 import RightPaneStore from '../../stores/RightPaneStore';
 import { addCourse, openSnackbar } from '../../actions/AppStoreActions';
 import AppStore from '../../stores/AppStore';
-import { PostAdd } from '@material-ui/icons';
+import { PostAdd } from '@mui/icons-material';
 import { termData } from '../../termData';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import { withStyles } from '@material-ui/core/styles';
-
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import { withStyles } from '@mui/styles';
 const styles = {
     input: {
         'margin-top': '10px',

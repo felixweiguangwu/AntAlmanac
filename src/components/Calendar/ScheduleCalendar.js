@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
-import { Popper } from '@material-ui/core';
+import { Popper } from '@mui/material';
 import './calendar.css';
 import CalendarPaneToolbar from './CalendarPaneToolbar';
 import CourseCalendarEvent from './CourseCalendarEvent';
@@ -250,19 +250,23 @@ class ScheduleCalendar extends PureComponent {
                     <Popper
                         anchorEl={this.state.anchorEvent}
                         placement="right"
-                        modifiers={{
-                            offset: {
-                                enabled: true,
-                                offset: '0, 10',
+                        modifiers={[
+                            {
+                                name: 'offset',
+                                options: {
+                                    offset: [0, 10],
+                                },
                             },
-                            flip: {
-                                enabled: true,
+                            {
+                                name: 'flip',
                             },
-                            preventOverflow: {
-                                enabled: true,
-                                boundariesElement: 'scrollParent',
+                            {
+                                name: 'preventOverflow',
+                                options: {
+                                    boundariesElement: 'scrollParent',
+                                },
                             },
-                        }}
+                        ]}
                         open={Boolean(this.state.anchorEvent)}
                     >
                         <CourseCalendarEvent

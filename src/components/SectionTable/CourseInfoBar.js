@@ -1,18 +1,19 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { Button, Popover } from '@material-ui/core';
-import { Skeleton } from '@material-ui/lab';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import { withStyles } from '@mui/styles';
+import { Button, Popover, Skeleton } from '@mui/material';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { PETERPORTAL_REST_ENDPOINT } from '../../api/endpoints';
 
 const styles = () => ({
-    rightSpace: {
-        marginRight: 4,
-    },
-    button: {
-        backgroundColor: '#72a9ed',
-        boxShadow: 'none',
+    root: {
+        button: {
+            backgroundColor: '#72a9ed',
+            boxShadow: 'none',
+        },
+        rightSpace: {
+            marginRight: 4,
+        },
     },
     courseInfoPane: {
         margin: 10,
@@ -146,7 +147,12 @@ class CourseInfoBar extends PureComponent {
                         const currentTarget = event.currentTarget;
                         this.togglePopover(currentTarget);
                     }}
-                    style={{ marginRight: '4px' }}
+                    sx={{
+                        marginRight: 1,
+                        backgroundColor: '#e0e0e0',
+                        color: 'rgba(0, 0, 0, 0.87)',
+                        '&:hover ': { backgroundColor: '#d5d5d5' },
+                    }}
                 >
                     <InfoOutlinedIcon fontSize="small" style={{ marginRight: '5px' }} />
                     {`${deptCode} ${courseNumber} | ${courseTitle}`}

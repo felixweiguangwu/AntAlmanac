@@ -1,18 +1,18 @@
 import React from 'react';
-import { Grid, CssBaseline, useMediaQuery } from '@material-ui/core';
+import { Grid, CssBaseline, useMediaQuery } from '@mui/material';
 import Calendar from '../Calendar/ScheduleCalendar';
 import Bar from './CustomAppBar';
 import DesktopTabs from '../CoursePane/DesktopTabs';
 import NotificationSnackbar from './NotificationSnackbar';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import MobileHome from './MobileHome';
-import DateFnsUtils from '@date-io/date-fns';
 
 const Home = () => {
     const isMobileScreen = useMediaQuery('(max-width: 750px)');
 
     return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
             <CssBaseline />
             <Bar />
             {isMobileScreen ? (
@@ -28,7 +28,7 @@ const Home = () => {
                 </Grid>
             )}
             <NotificationSnackbar />
-        </MuiPickersUtilsProvider>
+        </LocalizationProvider>
     );
 };
 

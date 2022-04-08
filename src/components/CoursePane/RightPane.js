@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import CoursePaneButtonRow from './CoursePaneButtonRow';
 import CourseRenderPane from './CourseRenderPane';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import RightPaneStore from '../../stores/RightPaneStore';
 import dispatcher from '../../dispatcher';
 import { clearCache } from '../../helpers';
@@ -29,14 +29,17 @@ class RightPane extends PureComponent {
     };
 
     toggleSearch = () => {
-        if(RightPaneStore.getFormData().ge !== 'ANY' || RightPaneStore.getFormData().deptValue !== 'ALL' || 
-            RightPaneStore.getFormData().sectionCode !== "" || RightPaneStore.getFormData().instructor !== ""){
+        if (
+            RightPaneStore.getFormData().ge !== 'ANY' ||
+            RightPaneStore.getFormData().deptValue !== 'ALL' ||
+            RightPaneStore.getFormData().sectionCode !== '' ||
+            RightPaneStore.getFormData().instructor !== ''
+        ) {
             dispatcher.dispatch({
                 type: 'TOGGLE_SEARCH',
             });
             this.forceUpdate();
-        }
-        else{
+        } else {
             openSnackbar(
                 'error',
                 `Please provide one of the following: Department, GE, Course Code/Range, or Instructor`

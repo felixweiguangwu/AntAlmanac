@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@material-ui/core';
-import { useMediaQuery } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-
+import { Button } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
+import { withStyles } from '@mui/styles';
 const styles = {
     button: {
         marginRight: '4px',

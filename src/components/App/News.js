@@ -1,19 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
-import {
-    Badge,
-    Button,
-    Divider,
-    List,
-    ListItem,
-    Paper,
-    Popover,
-    Tooltip,
-    Typography,
-    withStyles,
-} from '@material-ui/core';
-import { RssFeed } from '@material-ui/icons';
+import { Badge, Button, Divider, List, ListItem, Paper, Popover, Tooltip, Typography, Skeleton } from '@mui/material';
+import { withStyles } from '@mui/styles';
+import { RssFeed } from '@mui/icons-material';
 import { NEWS_ENDPOINT } from '../../api/endpoints';
-import { Skeleton } from '@material-ui/lab';
 import moment from 'moment-timezone';
 
 const styles = (theme) => ({
@@ -142,7 +131,7 @@ class News extends PureComponent {
                 <Tooltip title="See latest updates">
                     <Badge
                         variant="dot"
-                        overlap="circle"
+                        overlap="circular"
                         color="error"
                         invisible={!this.state.showDot}
                         classes={{

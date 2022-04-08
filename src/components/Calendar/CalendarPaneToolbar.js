@@ -1,15 +1,15 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { IconButton, Tooltip, Paper, Button, useMediaQuery, Menu } from '@material-ui/core';
-import { Delete, Undo, MoreHoriz } from '@material-ui/icons';
+import { withStyles } from '@mui/styles';
+import { IconButton, Tooltip, Paper, Button, useMediaQuery, Menu, Box } from '@mui/material';
+import { Delete, Undo, MoreHoriz } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import { clearSchedules, undoDelete } from '../../actions/AppStoreActions';
 import CustomEventsDialog from '../CustomEvents/CustomEventDialog';
 import { changeCurrentSchedule } from '../../actions/AppStoreActions';
 import ScreenshotButton from './ScreenshotButton';
 import ExportCalendar from './ExportCalendar';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 import ReactGA from 'react-ga';
 import ConditionalWrapper from '../App/ConditionalWrapper';
 
@@ -37,6 +37,7 @@ const styles = {
     },
     scheduleSelector: {
         marginLeft: '10px',
+        border: '0 0 0 0',
     },
 };
 
@@ -78,7 +79,7 @@ const CalendarPaneToolbar = (props) => {
                     variant={props.showFinalsSchedule ? 'contained' : 'outlined'}
                     onClick={props.toggleDisplayFinalsSchedule}
                     size="small"
-                    color={props.showFinalsSchedule ? 'primary' : 'default'}
+                    color={props.showFinalsSchedule ? 'primary' : 'inherit'}
                 >
                     Finals
                 </Button>
@@ -87,7 +88,7 @@ const CalendarPaneToolbar = (props) => {
             <div className={classes.spacer} />
 
             <Tooltip title="Undo last deleted course">
-                <IconButton onClick={() => undoDelete(null)}>
+                <IconButton onClick={() => undoDelete(null)} size="large" sx={{ border: 'none' }}>
                     <Undo fontSize="small" />
                 </IconButton>
             </Tooltip>
@@ -108,6 +109,8 @@ const CalendarPaneToolbar = (props) => {
                             });
                         }
                     }}
+                    size="large"
+                    sx={{ border: 'none' }}
                 >
                     <Delete fontSize="small" />
                 </IconButton>
@@ -117,7 +120,7 @@ const CalendarPaneToolbar = (props) => {
                 condition={isMobileScreen}
                 wrapper={(children) => (
                     <div>
-                        <IconButton onClick={handleMenuClick}>
+                        <IconButton onClick={handleMenuClick} size="large">
                             <MoreHoriz />
                         </IconButton>
 
@@ -132,13 +135,23 @@ const CalendarPaneToolbar = (props) => {
                     <ScreenshotButton onTakeScreenshot={props.onTakeScreenshot} />,
                     <CustomEventsDialog editMode={false} currentScheduleIndex={props.currentScheduleIndex} />,
                 ].map((element, index) => (
-                    <ConditionalWrapper
-                        key={index}
-                        condition={isMobileScreen}
-                        wrapper={(children) => <MenuItem onClick={handleMenuClose}>{children}</MenuItem>}
+                    <Box
+                        sx={{
+                            button: { color: 'rgba(0, 0, 0, 0.87)', border: '1px solid rgba(0, 0, 0, 0.23)' },
+                            'button:hover': {
+                                backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                                border: '1px solid rgba(0, 0, 0, 0.23)',
+                            },
+                        }}
                     >
-                        {element}
-                    </ConditionalWrapper>
+                        <ConditionalWrapper
+                            key={index}
+                            condition={isMobileScreen}
+                            wrapper={(children) => <MenuItem onClick={handleMenuClose}>{children}</MenuItem>}
+                        >
+                            {element}
+                        </ConditionalWrapper>
+                    </Box>
                 ))}
             </ConditionalWrapper>
         </Paper>

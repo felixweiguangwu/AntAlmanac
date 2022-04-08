@@ -1,13 +1,13 @@
 import React from 'react';
 import ColorPicker from '../App/ColorPicker';
-import { IconButton, Menu, MenuItem, TableCell } from '@material-ui/core';
+import { IconButton, Menu, MenuItem, TableCell } from '@mui/material';
 import { deleteCourse } from '../../actions/AppStoreActions';
 import AppStore from '../../stores/AppStore';
-import { Delete, Add, ArrowDropDown } from '@material-ui/icons';
+import { Delete, Add, ArrowDropDown } from '@mui/icons-material';
 import { addCourse, openSnackbar } from '../../actions/AppStoreActions';
 import { bindMenu, bindTrigger, usePopupState } from 'material-ui-popup-state/hooks';
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@mui/styles';
 import ReactGA from 'react-ga';
 
 const styles = {
@@ -31,6 +31,7 @@ export const ColorAndDelete = withStyles(styles)((props) => {
                             label: 'Added Course pane',
                         });
                     }}
+                    size="large"
                 >
                     <Delete fontSize="small" />
                 </IconButton>
@@ -62,10 +63,10 @@ export const ScheduleAddCell = withStyles(styles)((props) => {
     return (
         <TableCell padding="none">
             <div className={classes.container}>
-                <IconButton onClick={() => closeAndAddCourse(AppStore.getCurrentScheduleIndex())}>
+                <IconButton onClick={() => closeAndAddCourse(AppStore.getCurrentScheduleIndex())} size="large">
                     <Add fontSize="small" />
                 </IconButton>
-                <IconButton {...bindTrigger(popupState)}>
+                <IconButton {...bindTrigger(popupState)} size="large">
                     <ArrowDropDown fontSize="small" />
                 </IconButton>
                 <Menu {...bindMenu(popupState)} onClose={() => closeAndAddCourse(-1)}>

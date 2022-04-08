@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-
+import { withStyles } from '@mui/styles';
 const styles = {
     container: {
         display: 'flex',

@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import depts from './depts';
 import { updateFormValue } from '../../../actions/RightPaneActions';
 import RightPaneStore from '../../../stores/RightPaneStore.js';
-import { withStyles } from '@material-ui/core/styles';
-
+import { withStyles } from '@mui/styles';
 const style = {
     formControl: {
         flexGrow: 1,

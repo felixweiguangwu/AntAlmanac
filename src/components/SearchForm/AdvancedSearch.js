@@ -9,10 +9,10 @@ import {
     FormControlLabel,
     Typography,
     Collapse,
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+} from '@mui/material';
+import { withStyles } from '@mui/styles';
 import RightPaneStore from '../../stores/RightPaneStore';
-import { ExpandLess, ExpandMore } from '@material-ui/icons';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { updateFormValue } from '../../actions/RightPaneActions';
 
 const styles = {

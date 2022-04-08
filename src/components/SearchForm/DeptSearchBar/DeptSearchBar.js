@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 import depts from './depts';
 import { updateFormValue } from '../../../actions/RightPaneActions';
-import { withStyles } from '@material-ui/core/styles';
-import { TextField } from '@material-ui/core';
-import { Autocomplete } from '@material-ui/lab';
+import { withStyles } from '@mui/styles';
+import { TextField, Autocomplete } from '@mui/material';
 import RightPaneStore from '../../../stores/RightPaneStore';
 
 const style = {
@@ -96,7 +95,7 @@ class DeptSearchBar extends PureComponent {
                     options={this.state.favorites.concat(options)}
                     autoHighlight={true}
                     openOnFocus={true}
-                    getOptionSelected={this.compareValues}
+                    isOptionEqualToValue={this.compareValues}
                     getOptionLabel={(option) => option.deptLabel}
                     onChange={this.handleSetDept}
                     includeInputInList={true}

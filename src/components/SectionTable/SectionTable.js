@@ -9,14 +9,13 @@ import {
     TableHead,
     TableRow,
     Tooltip,
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-// import AlmanacGraph from '../EnrollmentGraph/EnrollmentGraph'; uncomment when we get past enrollment data back
+} from '@mui/material';
+import { withStyles } from '@mui/styles'; // import AlmanacGraph from '../EnrollmentGraph/EnrollmentGraph'; uncomment when we get past enrollment data back
 import CourseInfoBar from './CourseInfoBar';
 import SectionTableBody from './SectionTableBody';
 import CourseInfoButton from './CourseInfoButton';
-import { Help, Assessment, Assignment } from '@material-ui/icons';
-import ShowChartIcon from '@material-ui/icons/ShowChart';
+import { Help, Assessment, Assignment } from '@mui/icons-material';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
 import PropTypes from 'prop-types';
 
 const styles = {
